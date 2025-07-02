@@ -25,5 +25,45 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  userTracks UserTrack[]
+}
+
+model Artist {
+  id String @id
+  name String
+  genres String[]
+  popularity Int?
+  followers Int?
   tracks Track[]
+}
+
+model Track {
+  id String @id 
+  name String 
+  albumName String?
+  artistId String
+  artist Artist @relation(fields: [artistId], references: [id])
+  danceability Float?
+  energy Float?
+  valence Float?
+  tempo Float?
+  instrumentalness Float?
+  speechiness Float?
+  acousticness Float?
+  liveness Float?
+  duration Int?
+  createdAt DateTime @default(now())
+  userTracks UserTrack[]
+}
+
+model UserTrack {
+  id String @id @default(cuid())
+  userId String
+  trackId String
+  addedAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+  track Track @relation(fields: [trackId], references: [id])
+
+  @@unique([userId, trackId])
 }
