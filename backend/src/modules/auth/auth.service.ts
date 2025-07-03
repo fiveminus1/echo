@@ -1,8 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { ConfigService } from '@nestjs/config';
-import { PrismaService } from '../../prisma/prisma.service';
+import { PrismaService } from '../../../prisma/prisma.service';
 import axios from 'axios';
-import { access } from "fs";
 
 @Injectable()
 export class AuthService {
