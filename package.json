@@ -1,0 +1,11 @@
+{
+  "name": "Echo",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "concurrently \"pnpm --filter frontend dev\" \"pnpm --filter backend start:dev\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.0"
+  }
+}

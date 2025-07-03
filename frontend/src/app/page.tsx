@@ -1,9 +1,7 @@
 'use client';
 
-import { Card, CardContent  } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { SpotifyIcon } from '@/components/icons/spotify-icon';
-import { ArrowRight } from 'lucide-react';
 
 export default function Home() {
   const handleLogin = () => {
