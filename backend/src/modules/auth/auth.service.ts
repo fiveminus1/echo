@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { ConfigService } from '@nestjs/config';
 import { PrismaService } from '../../../prisma/prisma.service';
 import axios from 'axios';
+import * as crypto from 'crypto';
 
 @Injectable()
 export class AuthService {
@@ -26,11 +27,14 @@ export class AuthService {
       'playlist-modify-public',
     ].join(' ');
 
+    const state = crypto.randomBytes(8).toString('hex');
+
     const params = new URLSearchParams({
       client_id: this.clientId,
       response_type: 'code',
       redirect_uri: this.redirectUri,
       scope,
+      state,
     });
 
     return `https://accounts.spotify.com/authorize?${params.toString()}`;

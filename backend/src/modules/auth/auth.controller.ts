@@ -15,6 +15,7 @@ export class AuthController {
   @Get('callback')
   async callback(@Query('code') code: string, @Res() res: Response){
     await this.authService.handleSpotifyCallback(code);
+    console.log('Received code:', code); // Ensure the `code` exists
     return res.send('Authentication successful! You can close this tab.');
   }
 }
